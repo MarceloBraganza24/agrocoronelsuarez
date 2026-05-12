@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACS | Agro Coronel Suárez</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#172615;
+      --green-2:#22351f;
+      --accent:#9ccf3f;
+      --gold:#c69642;
+      --cream:#f5f1e7;
+      --white:#ffffff;
+      --text:#171717;
+      --muted:#6f746b;
+      --shadow:0 24px 70px rgba(0,0,0,.16);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Inter",sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      overflow-x:hidden;
+      padding-bottom:0;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin-inline:auto;
+    }
+
+    section{
+      padding:100px 0;
+      overflow:hidden;
+    }
+
+    .section-kicker{
+      color:var(--gold);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.78rem;
+      margin-bottom:12px;
+    }
+
+    .section-title{
+      font-size:clamp(2.1rem,4vw,3.5rem);
+      line-height:1.05;
+      letter-spacing:-2px;
+      margin-bottom:18px;
+    }
+
+    .section-text{
+      max-width:720px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1.05rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      font-weight:900;
+      transition:.25s ease;
+      white-space:nowrap;
+    }
+
+    .btn-portal{
+      background:var(--accent);
+      color:#101510;
+      padding:15px 24px;
+      box-shadow:0 14px 34px rgba(156,207,63,.35);
+    }
+
+    .btn-portal:hover{
+      transform:translateY(-3px);
+      background:#b9ed58;
+    }
+
+    .btn-dark{
+      background:var(--green);
+      color:white;
+      padding:15px 24px;
+    }
+
+    .btn-dark:hover{
+      transform:translateY(-3px);
+      background:#243b20;
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.35);
+      color:white;
+      padding:15px 24px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+    }
+
+    .btn-outline:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.15);
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      background:rgba(245,241,231,.92);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+
+    .navbar{
+      height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      color:var(--green);
+      letter-spacing:-1px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:var(--green);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-size:1.05rem;
+      font-weight:900;
+      flex-shrink:0;
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:0;
+      font-size:.72rem;
+      margin-top:2px;
+    }
+
+    .desktop-nav{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      font-weight:800;
+      color:#263124;
+      font-size:.94rem;
+    }
+
+    .desktop-nav a:not(.btn):hover{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      display:none;
+      width:48px;
+      height:48px;
+      border:none;
+      border-radius:14px;
+      background:var(--green);
+      color:white;
+      cursor:pointer;
+    }
+
+    .menu-btn span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:white;
+      margin:5px auto;
+      transition:.25s;
+    }
+
+    .menu-btn.active span:nth-child(1){
+      transform:translateY(7px) rotate(45deg);
+    }
+
+    .menu-btn.active span:nth-child(2){
+      opacity:0;
+    }
+
+    .menu-btn.active span:nth-child(3){
+      transform:translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu{
+      position:fixed;
+      inset:82px 0 auto 0;
+      background:var(--green);
+      padding:28px 5%;
+      transform:translateY(-130%);
+      opacity:0;
+      pointer-events:none;
+      transition:.3s ease;
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+
+    .mobile-menu.active{
+      transform:translateY(0);
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .mobile-menu a{
+      display:block;
+      color:white;
+      font-size:1.15rem;
+      font-weight:800;
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu .btn-portal{
+      color:#111;
+      margin-top:18px;
+      width:100%;
+      padding:17px 22px;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      padding-top:110px;
+      color:white;
+      background:
+        linear-gradient(90deg,rgba(10,16,10,.86),rgba(10,16,10,.48)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:760px;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(156,207,63,.14);
+      color:#c8ff72;
+      font-weight:900;
+      margin-bottom:24px;
+      border:1px solid rgba(156,207,63,.35);
+    }
+
+    .hero h1{
+      font-size:clamp(2.9rem,7vw,6.4rem);
+      line-height:.93;
+      letter-spacing:-4px;
+      margin-bottom:26px;
+    }
+
+    .hero p{
+      font-size:clamp(1rem,2vw,1.22rem);
+      color:#e6e6e0;
+      line-height:1.8;
+      margin-bottom:34px;
+      max-width:660px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    /* SERVICES */
+
+    .services-grid{
+      margin-top:48px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+
+    .service-card{
+      background:white;
+      border-radius:28px;
+      padding:32px;
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 16px 50px rgba(20,30,20,.06);
+      transition:transform .25s ease, box-shadow .25s ease, opacity .8s ease;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow);
+    }
+
+    .service-icon{
+      width:66px;
+      height:66px;
+      border-radius:20px;
+      background:#edf7d7;
+      display:grid;
+      place-items:center;
+      font-size:1.8rem;
+      margin-bottom:22px;
+    }
+
+    .service-card h3{
+      font-size:1.28rem;
+      margin-bottom:12px;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      line-height:1.75;
+      font-size:.96rem;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:var(--green);
+      color:white;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about-image{
+      min-height:520px;
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=1200&q=80");
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 30px 80px rgba(0,0,0,.3);
+    }
+
+    .about .section-text{
+      color:#d4dacd;
+    }
+
+    .stats{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .stat{
+      padding:26px;
+      border-radius:24px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .stat strong{
+      display:block;
+      color:var(--accent);
+      font-size:2.5rem;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .stat span{
+      color:#d7ddd1;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    /* CTA */
+
+    .campaign{
+      background:
+        linear-gradient(90deg,rgba(12,18,12,.82),rgba(12,18,12,.45)),
+        url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      border-radius:36px;
+      padding:78px;
+      color:white;
+      overflow:hidden;
+    }
+
+    .campaign h2{
+      font-size:clamp(2rem,4vw,3.4rem);
+      letter-spacing:-2px;
+      line-height:1.06;
+      margin-bottom:18px;
+      max-width:820px;
+    }
+
+    .campaign p{
+      max-width:680px;
+      color:#e6e6e0;
+      line-height:1.8;
+      margin-bottom:28px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid{
+      margin-top:48px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .contact-panel,
+    .form-panel{
+      background:white;
+      border-radius:30px;
+      padding:34px;
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 16px 50px rgba(20,30,20,.06);
+    }
+
+    .contact-panel h3,
+    .form-panel h3{
+      font-size:1.65rem;
+      margin-bottom:22px;
+      letter-spacing:-1px;
+    }
+
+    .contact-item{
+      padding:18px 0;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .contact-item strong{
+      display:block;
+      color:var(--green);
+      margin-bottom:5px;
+      font-size:.95rem;
+    }
+
+    .contact-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:26px;
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      border:1px solid rgba(0,0,0,.12);
+      border-radius:16px;
+      padding:15px 16px;
+      font-family:inherit;
+      font-size:1rem;
+      outline:none;
+      background:#faf9f4;
+    }
+
+    textarea{
+      min-height:135px;
+      resize:vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px rgba(156,207,63,.16);
+    }
+
+    .map{
+      margin-top:28px;
+      overflow:hidden;
+      border-radius:26px;
+      height:360px;
+      border:1px solid rgba(0,0,0,.08);
+    }
+
+    .map iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:var(--green);
+      color:#d7ddd1;
+      padding:72px 0 28px;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.3fr .8fr .9fr 1fr;
+      gap:42px;
+      padding-bottom:54px;
+      border-bottom:1px solid rgba(255,255,255,.18);
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:22px;
+      color:white;
+      font-size:1.4rem;
+      font-weight:900;
+    }
+
+    .footer-logo .brand-mark{
+      background:white;
+      color:var(--green);
+    }
+
+    .footer-col h4{
+      color:white;
+      font-size:.86rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:20px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      display:block;
+      color:#b7bfb0;
+      line-height:1.8;
+      margin-bottom:10px;
+      font-weight:600;
+    }
+
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+
+    .footer-portal{
+      display:inline-flex !important;
+      color:#111 !important;
+      margin-top:10px;
+    }
+
+    .footer-bottom{
+      padding-top:24px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:#aeb8a7;
+      font-weight:600;
+      font-size:.94rem;
+    }
+
+    .footer-bottom strong{
+      color:white;
+    }
+
+    .floating-portal{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      z-index:9999;
+    }
+
+    .floating-portal .btn-portal{
+      padding:16px 20px;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.05)}
+    }
+
+    /* SCROLL ANIMATIONS */
+
+    .reveal{
+      opacity:0;
+      transition:
+        opacity .85s ease,
+        transform .85s cubic-bezier(.22,1,.36,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translate3d(0,0,0) scale(1);
+    }
+
+    .from-bottom{
+      transform:translate3d(0,55px,0);
+    }
+
+    .from-left{
+      transform:translate3d(-70px,0,0);
+    }
+
+    .from-right{
+      transform:translate3d(70px,0,0);
+    }
+
+    .zoom-in{
+      transform:scale(.92);
+    }
+
+    .delay-1{ transition-delay:.08s; }
+    .delay-2{ transition-delay:.16s; }
+    .delay-3{ transition-delay:.24s; }
+    .delay-4{ transition-delay:.32s; }
+    .delay-5{ transition-delay:.40s; }
+
+    @media(prefers-reduced-motion:reduce){
+      *,
+      *::before,
+      *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+      }
+
+      .reveal{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1024px){
+      .desktop-nav{
+        gap:16px;
+        font-size:.88rem;
+      }
+
+      .services-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .about-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:768px){
+      section{
+        padding:78px 0;
+      }
+
+      .desktop-nav{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero{
+        min-height:92svh;
+        padding-top:120px;
+      }
+
+      .hero h1{
+        letter-spacing:-2px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .campaign{
+        padding:48px 28px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+
+      .floating-portal{
+        right:14px;
+        left:14px;
+        bottom:14px;
+      }
+
+      .floating-portal .btn-portal{
+        width:100%;
+      }
+
+      body{
+        padding-bottom:72px;
+      }
+
+      .from-left,
+      .from-right{
+        transform:translate3d(0,45px,0);
+      }
+
+      .from-left.show,
+      .from-right.show{
+        transform:translate3d(0,0,0);
+      }
+    }
+
+    @media(max-width:480px){
+      .container{
+        width:min(100% - 28px,1180px);
+      }
+
+      .navbar{
+        height:76px;
+      }
+
+      .mobile-menu{
+        inset:76px 0 auto 0;
+      }
+
+      .brand-mark{
+        width:42px;
+        height:42px;
+        font-size:.9rem;
+      }
+
+      .brand{
+        font-size:.95rem;
+      }
+
+      .brand small{
+        font-size:.66rem;
+      }
+
+      .hero{
+        padding-top:104px;
+      }
+
+      .hero-badge{
+        font-size:.78rem;
+      }
+
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .service-card,
+      .contact-panel,
+      .form-panel{
+        padding:25px;
+        border-radius:24px;
+      }
+
+      .about-image{
+        min-height:360px;
+      }
+
+      .map{
+        height:300px;
+      }
+
+      .contact-actions{
+        flex-direction:column;
+      }
+
+      .contact-actions .btn{
+        width:100%;
+      }
+    }
+
+    @media(max-width:375px){
+      .section-title{
+        font-size:2rem;
+      }
+
+      .hero h1{
+        font-size:2.7rem;
+      }
+
+      .btn{
+        font-size:.92rem;
+      }
+
+      .campaign{
+        padding:40px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="#inicio" class="brand">
+        <img src="imagenes/logo.png" alt="Agro Coronel Suárez Logo" style="height: 55px;">
+        <div>
+          Agro Coronel Suárez
+          <small>Socio estratégico del productor</small>
+        </div>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+          Portal Clientes
+        </a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+        Portal Clientes
+      </a>
+    </div>
+  </header>
+
+  <div class="floating-portal">
+    <a class="btn btn-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+      🌾 Portal Clientes
+    </a>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge reveal from-left">Más de 50 años acompañando al productor</div>
+          <h1 class="reveal from-right delay-1">Soluciones integrales para el agro.</h1>
+          <p class="reveal from-bottom delay-2">
+            Acopio, venta de insumos, semillas, fertilizantes, logística a campo y asesoramiento técnico para productores de Coronel Suárez y la región.
+          </p>
+
+          <div class="hero-actions reveal from-bottom delay-3">
+            <a class="btn btn-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+              Ingresar al Portal Clientes
+            </a>
+            <a class="btn btn-outline" href="#contacto">Contacto comercial</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-kicker reveal from-left">Servicios</div>
+        <h2 class="section-title reveal from-right delay-1">Todo lo que tu campaña necesita.</h2>
+        <p class="section-text reveal from-bottom delay-2">
+          Una propuesta integral para acompañar al productor desde la planificación hasta la comercialización.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card reveal from-bottom delay-1">
+            <div class="service-icon">🌾</div>
+            <h3>Acopio de cereales</h3>
+            <p>Recepción, acondicionamiento y gestión de granos con infraestructura preparada para cada campaña.</p>
+          </article>
+
+          <article class="service-card reveal from-bottom delay-2">
+            <div class="service-icon">🚛</div>
+            <h3>Logística campo-planta-puerto</h3>
+            <p>Coordinación logística para mover tu producción de manera eficiente, segura y ordenada.</p>
+          </article>
+
+          <article class="service-card reveal from-bottom delay-3">
+            <div class="service-icon">🌱</div>
+            <h3>Semillas e insumos</h3>
+            <p>Semillas, híbridos, fertilizantes, fitosanitarios y soluciones adaptadas a cada estrategia de manejo.</p>
+          </article>
+
+          <article class="service-card reveal from-bottom delay-4">
+            <div class="service-icon">📈</div>
+            <h3>Equipo técnico</h3>
+            <p>Asesoramiento especializado para tomar mejores decisiones productivas y comerciales.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="empresa">
+      <div class="container about-grid">
+        <div class="about-image reveal zoom-in"></div>
+
+        <div>
+          <div class="section-kicker reveal from-left">Empresa</div>
+          <h2 class="section-title reveal from-right delay-1">Experiencia, compromiso y cercanía.</h2>
+          <p class="section-text reveal from-bottom delay-2">
+            Agro Coronel Suárez trabaja desde hace más de cinco décadas junto al productor agropecuario, brindando servicios para cada etapa de la campaña.
+          </p>
+          <p class="section-text reveal from-bottom delay-3">
+            La empresa combina trayectoria regional, atención personalizada y soluciones comerciales para simplificar la gestión diaria del campo.
+          </p>
+
+          <div class="stats">
+            <div class="stat reveal from-bottom delay-1">
+              <strong><span class="counter" data-target="50">0</span>+</strong>
+              <span>Años de trayectoria</span>
+            </div>
+
+            <div class="stat reveal from-bottom delay-2">
+              <strong><span class="counter" data-target="24">0</span>h</strong>
+              <span>Atención comercial</span>
+            </div>
+
+            <div class="stat reveal from-bottom delay-3">
+              <strong><span class="counter" data-target="100">0</span>%</strong>
+              <span>Compromiso regional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="campaign reveal from-bottom">
+          <h2 class="reveal from-right delay-1">Gestioná tu información desde el Portal Clientes.</h2>
+          <p class="reveal from-bottom delay-2">
+            Accedé de forma rápida a herramientas, consultas y gestiones vinculadas a tu actividad como productor.
+          </p>
+          <a class="btn btn-portal reveal from-bottom delay-3" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+            Ir al Portal Clientes
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-kicker reveal from-left">Contacto</div>
+        <h2 class="section-title reveal from-right delay-1">Consultanos.</h2>
+        <p class="section-text reveal from-bottom delay-2">
+          Dejá tu mensaje o comunicate directamente con ACS para consultas comerciales, insumos, logística o acopio.
+        </p>
+
+        <div class="contact-grid">
+          <div class="form-panel reveal from-left">
+            <h3>Enviar consulta</h3>
+
+            <form>
+              <input type="text" placeholder="Nombre y apellido" required>
+              <input type="tel" placeholder="Teléfono" required>
+              <input type="email" placeholder="Email">
+              <select required>
+                <option value="">Motivo de consulta</option>
+                <option>Acopio de cereales</option>
+                <option>Semillas e insumos</option>
+                <option>Fertilizantes / fitosanitarios</option>
+                <option>Logística</option>
+                <option>Portal Clientes</option>
+              </select>
+              <textarea placeholder="Escribí tu consulta..." required></textarea>
+              <button class="btn btn-dark" type="submit">Enviar mensaje</button>
+            </form>
+          </div>
+
+          <div class="contact-panel reveal from-right delay-1">
+            <h3>Agro Coronel Suárez</h3>
+
+            <div class="contact-item">
+              <strong>Dirección</strong>
+              Uspallata 63, Coronel Suárez, Buenos Aires
+            </div>
+
+            <div class="contact-item">
+              <strong>Teléfonos</strong>
+              2926-410589 / 2926-450991
+            </div>
+
+            <div class="contact-item">
+              <strong>Email</strong>
+              tomas.gayoso@agrocoronelsuarez.com.ar
+            </div>
+
+            <div class="contact-item">
+              <strong>Instagram</strong>
+              @agrocoronelsuarez
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn btn-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+                Portal Clientes
+              </a>
+              <a class="btn btn-dark" href="tel:02926418490">
+                Llamar ahora
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map reveal from-bottom delay-2">
+          <iframe src="https://maps.google.com/maps?q=Uspallata%2063%20Coronel%20Suarez&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col reveal from-bottom">
+          <div class="footer-logo">
+            <img src="imagenes/logo_blanco.png" alt="Agro Coronel Suárez Logo" style="height: 55px;">
+            <div>Agro Coronel Suárez</div>
+          </div>
+          <p>
+            Socio estratégico del productor. Servicios para el agro desde hace más de 50 años.
+          </p>
+        </div>
+
+        <div class="footer-col reveal from-bottom delay-1">
+          <h4>Navegación</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#empresa">Empresa</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+
+        <div class="footer-col reveal from-bottom delay-2">
+          <h4>Institucional</h4>
+          <p>AGRO CORONEL SUAREZ S.A.C.I.F.I. y A.</p>
+          <p>CUIT 33-51985741-9</p>
+          <a class="btn btn-portal footer-portal" href="https://clientes.agrocoronelsuarez.com.ar/" target="_blank">
+            Portal Clientes
+          </a>
+        </div>
+
+        <div class="footer-col reveal from-bottom delay-3">
+          <h4>Contacto</h4>
+          <p>Uspallata 63, Coronel Suárez</p>
+          <p>02926 41-8490</p>
+          <p>tomas.gayoso@agrocoronelsuarez.com.ar</p>
+          <p>@agrocoronelsuarez</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom reveal from-bottom delay-4">
+        <p>© 2026 Agro Coronel Suárez. Todos los derechos reservados.</p>
+        <p>Desarrollado por <strong>MorCode Labs</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      menuBtn.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        menuBtn.classList.remove("active");
+      });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold:0.16,
+      rootMargin:"0px 0px -60px 0px"
+    });
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+    const counters = document.querySelectorAll(".counter");
+    let countersStarted = false;
+
+    function animateCounters(){
+      counters.forEach(counter => {
+        const target = Number(counter.dataset.target);
+        const duration = 1400;
+        const startTime = performance.now();
+
+        function update(currentTime){
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.floor(eased * target);
+
+          counter.textContent = value;
+
+          if(progress < 1){
+            requestAnimationFrame(update);
+          }else{
+            counter.textContent = target;
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    const statsSection = document.querySelector(".stats");
+
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting && !countersStarted){
+          countersStarted = true;
+          animateCounters();
+        }
+      });
+    }, { threshold:.35 });
+
+    statsObserver.observe(statsSection);
+  </script>
+
+</body>
+</html>
