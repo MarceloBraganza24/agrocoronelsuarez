@@ -376,8 +376,8 @@
       border-radius:34px;
       overflow:hidden;
       background:
-        linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
-        url("https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=1200&q=80");
+        linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1759560655888-b406cebfea48?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D");
       background-size:cover;
       background-position:center;
       box-shadow:0 30px 80px rgba(0,0,0,.3);
@@ -402,11 +402,24 @@
     }
 
     .stat strong{
-      display:block;
+      display:flex;
+      align-items:flex-end;
+      gap:4px;
       color:var(--accent);
-      font-size:2.5rem;
       line-height:1;
-      margin-bottom:10px;
+      margin-bottom:12px;
+      font-weight:900;
+    }
+
+    .stat strong .counter{
+      font-size:4.5rem;
+      letter-spacing:-3px;
+      line-height:.9;
+    }
+
+    .stat strong span:last-child{
+      font-size:2.5rem;
+      margin-bottom:6px;
     }
 
     .stat span{
@@ -971,17 +984,26 @@
 
           <div class="stats">
             <div class="stat reveal from-bottom delay-1">
-              <strong><span class="counter" data-target="50">0</span>+</strong>
+              <strong>
+                <span class="counter" data-target="50">0</span>
+                <span>+</span>
+              </strong>
               <span>Años de trayectoria</span>
             </div>
 
             <div class="stat reveal from-bottom delay-2">
-              <strong><span class="counter" data-target="24">0</span>h</strong>
+              <strong>
+                <span class="counter" data-target="24">0</span>
+                <span>h</span>
+              </strong>
               <span>Atención comercial</span>
             </div>
 
             <div class="stat reveal from-bottom delay-3">
-              <strong><span class="counter" data-target="100">0</span>%</strong>
+              <strong>
+                <span class="counter" data-target="100">0</span>
+                <span>%</span>
+              </strong>
               <span>Compromiso regional</span>
             </div>
           </div>
