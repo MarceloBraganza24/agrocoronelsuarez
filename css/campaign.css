@@ -1,0 +1,28 @@
+/* CTA */
+
+    .campaign {
+      background:
+        linear-gradient(90deg,rgba(53,70,35,.88),rgba(53,70,35,.50)),
+        url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      border-radius:28px;
+      padding:78px;
+      color:white;
+      overflow:hidden;
+    }
+
+    .campaign h2 {
+      font-size:clamp(2rem,4vw,3.4rem);
+      letter-spacing:-2px;
+      line-height:1.06;
+      margin-bottom:18px;
+      max-width:820px;
+    }
+
+    .campaign p {
+      max-width:680px;
+      color:#efefe9;
+      line-height:1.8;
+      margin-bottom:28px;
+    }

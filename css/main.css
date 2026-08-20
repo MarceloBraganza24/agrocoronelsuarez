@@ -1,0 +1,13 @@
+/* Estilos principales: cada sección vive en su propio archivo. */
+@import url("./base.css");
+@import url("./header.css");
+@import url("./hero.css");
+@import url("./services.css");
+@import url("./history.css");
+@import url("./identity.css");
+@import url("./team.css");
+@import url("./campaign.css");
+@import url("./contact.css");
+@import url("./footer.css");
+@import url("./animations.css");
+@import url("./responsive.css");

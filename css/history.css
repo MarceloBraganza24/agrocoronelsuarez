@@ -1,0 +1,90 @@
+/* HISTORIA */
+
+    .history {
+      background:var(--green);
+      color:white;
+    }
+
+    .history-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:64px;
+      align-items:center;
+    }
+
+    .history-image {
+      min-height:570px;
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(53,70,35,.10),rgba(53,70,35,.10)),
+        /* url("https://images.unsplash.com/photo-1759560655888-b406cebfea48?fm=jpg&q=70&w=1800&auto=format&fit=crop"); */
+        url("../imagenes/history_image.png");
+      background-size: cover;
+      background-position:center;
+      box-shadow:0 30px 80px rgba(0,0,0,.30);
+      position:relative;
+    }
+
+    .history-image::after {
+      content:"Más de 50 años junto al productor";
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      padding:18px 20px;
+      background:rgba(53,70,35,.88);
+      color:white;
+      font-weight:900;
+      border-left:4px solid var(--brown);
+      backdrop-filter:blur(8px);
+    }
+
+    .history .section-text {
+      color:#e0e7d9;
+    }
+
+    .history .section-text + .section-text {
+      margin-top:18px;
+    }
+
+    .stats {
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .stat {
+      padding:24px;
+      border-radius:20px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .stat strong {
+      display:flex;
+      align-items:flex-end;
+      gap:4px;
+      color:var(--accent-light);
+      line-height:1;
+      margin-bottom:12px;
+      font-weight:900;
+    }
+
+    .stat strong .counter {
+      font-size:4rem;
+      letter-spacing:-3px;
+      line-height:.9;
+    }
+
+    .stat strong span:last-child {
+      font-size:2.2rem;
+      margin-bottom:5px;
+    }
+
+    .stat > span {
+      color:#dde4d7;
+      font-weight:700;
+      font-size:.92rem;
+    }

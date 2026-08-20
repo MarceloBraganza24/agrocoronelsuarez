@@ -1,0 +1,122 @@
+/* HEADER */
+
+    header {
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      background:rgba(245,241,231,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(77,100,49,.12);
+    }
+
+    .navbar {
+      height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      color:var(--green);
+      letter-spacing:-1px;
+      min-width:max-content;
+    }
+
+    .brand img {
+      height:55px;
+      width:auto;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:0;
+      font-size:.72rem;
+      margin-top:2px;
+    }
+
+    .desktop-nav {
+      display:flex;
+      align-items:center;
+      gap:20px;
+      font-weight:800;
+      color:#263124;
+      font-size:.91rem;
+    }
+
+    .desktop-nav a:not(.btn):hover {
+      color:var(--accent);
+    }
+
+    .menu-btn {
+      display:none;
+      width:48px;
+      height:48px;
+      border:none;
+      border-radius:14px;
+      background:var(--green);
+      color:white;
+      cursor:pointer;
+    }
+
+    .menu-btn span {
+      display:block;
+      width:24px;
+      height:2px;
+      background:white;
+      margin:5px auto;
+      transition:.25s;
+    }
+
+    .menu-btn.active span:nth-child(1) {
+      transform:translateY(7px) rotate(45deg);
+    }
+
+    .menu-btn.active span:nth-child(2) {
+      opacity:0;
+    }
+
+    .menu-btn.active span:nth-child(3) {
+      transform:translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position:fixed;
+      inset:82px 0 auto 0;
+      background:var(--green);
+      padding:28px 5%;
+      transform:translateY(-130%);
+      opacity:0;
+      pointer-events:none;
+      transition:.3s ease;
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+
+    .mobile-menu.active {
+      transform:translateY(0);
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .mobile-menu a {
+      display:block;
+      color:white;
+      font-size:1.08rem;
+      font-weight:800;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu .btn-portal {
+      color:#111;
+      margin-top:18px;
+      width:100%;
+      padding:17px 22px;
+    }

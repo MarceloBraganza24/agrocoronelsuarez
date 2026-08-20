@@ -1,0 +1,207 @@
+/* RESPONSIVE */
+
+    @media(max-width:1120px) {
+      .desktop-nav {
+        gap:14px;
+        font-size:.84rem;
+      }
+
+      .desktop-nav .btn {
+        padding:13px 17px;
+      }
+    }
+
+    @media(max-width:1024px) {
+      .desktop-nav {
+        display:none;
+      }
+
+      .menu-btn {
+        display:block;
+      }
+
+      .services-grid {
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .history-grid,
+      .contact-grid {
+        grid-template-columns:1fr;
+      }
+
+      .identity-heading {
+        display:block;
+      }
+
+      .identity-heading .section-text {
+        margin-top:12px;
+      }
+
+      .identity-grid {
+        grid-template-columns:1fr;
+      }
+
+      .team-grid {
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:768px) {
+      section {
+        padding:78px 0;
+      }
+
+      .hero {
+        min-height:92svh;
+        padding-top:120px;
+      }
+
+      .hero h1 {
+        letter-spacing:-2px;
+      }
+
+      .hero-actions {
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-actions .btn {
+        width:100%;
+      }
+
+      .history-image {
+        min-height:420px;
+      }
+
+      .stats {
+        grid-template-columns:1fr;
+      }
+
+      .team-grid {
+        gap:36px 18px;
+      }
+
+      .campaign {
+        padding:48px 28px;
+      }
+
+      .footer-grid {
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+
+      .floating-portal {
+        right:14px;
+        left:14px;
+        bottom:14px;
+      }
+
+      .floating-portal .btn-portal {
+        width:100%;
+      }
+
+      body {
+        padding-bottom:72px;
+      }
+
+      .from-left,
+      .from-right {
+        transform:translate3d(0,45px,0);
+      }
+
+      .from-left.show,
+      .from-right.show {
+        transform:translate3d(0,0,0);
+      }
+    }
+
+    @media(max-width:560px) {
+      .container {
+        width:min(100% - 28px,1180px);
+      }
+
+      .navbar {
+        height:76px;
+      }
+
+      .mobile-menu {
+        inset:76px 0 auto 0;
+      }
+
+      .brand img {
+        height:46px;
+      }
+
+      .brand {
+        font-size:.92rem;
+      }
+
+      .brand small {
+        font-size:.62rem;
+      }
+
+      .hero {
+        padding-top:104px;
+      }
+
+      .hero-badge {
+        font-size:.78rem;
+      }
+
+      .services-grid,
+      .team-grid {
+        grid-template-columns:1fr;
+      }
+
+      .service-card,
+      .contact-panel,
+      .form-panel,
+      .identity-card {
+        padding:25px;
+        border-radius:20px;
+      }
+
+      .history-image {
+        min-height:360px;
+        border-radius:20px;
+      }
+
+      .team-photo {
+        width:164px;
+        height:164px;
+      }
+
+      .map {
+        height:300px;
+      }
+
+      .contact-actions {
+        flex-direction:column;
+      }
+
+      .contact-actions .btn {
+        width:100%;
+      }
+    }
+
+    @media(max-width:375px) {
+      .section-title {
+        font-size:2rem;
+      }
+
+      .hero h1 {
+        font-size:2.7rem;
+      }
+
+      .btn {
+        font-size:.92rem;
+      }
+
+      .campaign {
+        padding:40px 22px;
+      }
+    }
